@@ -1,55 +1,6 @@
 
 #include <iostream>
-#include <string>
-
-struct  Character{
-  private:
-    int x{0};
-    int y{0};
-
-    std::string name;
-  public:
-    Character(std::string _name) : name(_name) {}
-    void move(){
-      x = x+1;
-      y = y+1;
-
-      std::cout << name << "now is at: " << x << ", " << y << std::endl;
-    }
-};
-
-
-
-class Command {
-  public:
-    virtual ~Command(){}
-    virtual void execute(Character &c) = 0;
-};
-
-
-
-class MoveCommand : public Command {
-  public:
-    virtual void  execute(Character &c){
-      c.move();
-    }
-};
-
-
-class InputHandler{
-  public:
-    Command* handleInput(){
-      if(std::cin.get() == 'm')
-          return moveButton;
-        return NULL;
-
-    }
-    
-  private:
-
-
-    Command* moveButton = new MoveCommand;
-};
+#include "header/InputHandler.hpp"
 
 int main (int argc, char *argv[]) {
   
